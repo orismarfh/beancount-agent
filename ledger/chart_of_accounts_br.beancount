@@ -1,0 +1,58 @@
+; Plano de contas de referência (padrão brasileiro) — dados 100% genéricos.
+; Nomes de conta em inglês (exigência do Beancount); comentários em PT-BR.
+; Moedas operacionais: BRL, USD e USDC.
+
+option "title" "Plano de contas BR de referência"
+option "operating_currency" "BRL"
+option "operating_currency" "USD"
+
+2024-01-01 commodity BRL
+  name: "Real brasileiro"
+2024-01-01 commodity USD
+  name: "Dólar americano"
+2024-01-01 commodity USDC
+  name: "USD Coin (stablecoin)"
+
+; ===== ATIVO =====
+2024-01-01 open Assets:Bank:Checking:BRL            BRL        ; Conta corrente em reais
+2024-01-01 open Assets:Bank:Savings:BRL             BRL        ; Aplicação de liquidez diária
+2024-01-01 open Assets:Bank:Checking:USD            USD        ; Conta em dólar
+2024-01-01 open Assets:Crypto:Wallet:USDC           USDC       ; Carteira de stablecoin
+2024-01-01 open Assets:Receivables:Clients          BRL,USD    ; Clientes a receber
+2024-01-01 open Assets:Taxes:Recoverable            BRL        ; Impostos a recuperar
+2024-01-01 open Assets:Prepaid                      BRL        ; Despesas antecipadas
+
+; ===== PASSIVO =====
+2024-01-01 open Liabilities:CreditCard:Main         BRL        ; Cartão de crédito (fatura em aberto)
+2024-01-01 open Liabilities:CreditCard:Virtual      USD,USDC   ; Cartão virtual em moeda estrangeira
+2024-01-01 open Liabilities:Payables:Suppliers      BRL,USD    ; Fornecedores a pagar
+2024-01-01 open Liabilities:Taxes:Payable           BRL        ; Impostos a recolher
+2024-01-01 open Liabilities:Payroll:Payable         BRL        ; Obrigações trabalhistas
+
+; ===== PATRIMÔNIO LÍQUIDO =====
+2024-01-01 open Equity:Capital                      BRL        ; Capital social
+2024-01-01 open Equity:Opening-Balances             BRL,USD,USDC ; Saldos de abertura
+2024-01-01 open Equity:Retained-Earnings            BRL        ; Lucros/prejuízos acumulados
+2024-01-01 open Equity:Distributions                BRL        ; Distribuição de lucros
+2024-01-01 open Equity:Conversions                  BRL,USD,USDC ; Contrapartida de câmbio
+
+; ===== RECEITAS =====
+2024-01-01 open Income:Services                     BRL,USD    ; Receita de prestação de serviços
+2024-01-01 open Income:Interest                     BRL        ; Receitas financeiras (rendimentos)
+2024-01-01 open Income:Other                        BRL,USD    ; Outras receitas
+
+; ===== DESPESAS =====
+2024-01-01 open Expenses:Software                   BRL,USD    ; Software e assinaturas
+2024-01-01 open Expenses:Cloud                      BRL,USD    ; Infraestrutura em nuvem
+2024-01-01 open Expenses:Marketing                  BRL,USD    ; Marketing e publicidade
+2024-01-01 open Expenses:Professional-Services      BRL        ; Serviços profissionais (contador etc.)
+2024-01-01 open Expenses:Office                     BRL        ; Escritório e material
+2024-01-01 open Expenses:Travel                     BRL,USD    ; Viagens e deslocamento
+2024-01-01 open Expenses:Meals                      BRL        ; Alimentação
+2024-01-01 open Expenses:Payroll                    BRL        ; Folha de pagamento e encargos
+2024-01-01 open Expenses:Bank-Fees                  BRL,USD    ; Tarifas bancárias
+2024-01-01 open Expenses:Interest                   BRL        ; Despesas financeiras (juros)
+2024-01-01 open Expenses:FX-Loss                    BRL        ; Variação cambial
+2024-01-01 open Expenses:Taxes:Simples              BRL        ; DAS / Simples Nacional
+2024-01-01 open Expenses:Taxes:Other                BRL        ; Outros tributos e taxas
+2024-01-01 open Expenses:Uncategorized              BRL,USD    ; A classificar (pendente de revisão)

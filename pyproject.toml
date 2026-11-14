@@ -1,0 +1,35 @@
+[project]
+name = "beancount-agent"
+version = "0.0.1"
+description = "Contabilidade diária movida a agentes, sobre Beancount e Fava."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.12"
+dependencies = [
+    "beancount>=3",
+    "beangulp",
+    "fava",
+]
+
+[project.scripts]
+beancount-agent = "beancount_agent.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/beancount_agent"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]

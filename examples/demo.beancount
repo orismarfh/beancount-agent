@@ -1,0 +1,92 @@
+; Livro de exemplo — 100% FICTÍCIO. Empresa, valores e fornecedores inventados.
+; Cobre 1 mês (2024-03). Inclui fatura de cartão paga pelo banco e um balance.
+
+include "../ledger/chart_of_accounts_br.beancount"
+
+option "title" "Demo Ltda (fictícia)"
+
+2024-03-01 pad Assets:Bank:Checking:BRL Equity:Opening-Balances
+2024-03-02 balance Assets:Bank:Checking:BRL  20000.00 BRL
+
+2024-03-04 * "Cliente Exemplo A" "Serviço de consultoria, março"
+  Assets:Bank:Checking:BRL     12000.00 BRL
+  Income:Services             -12000.00 BRL
+
+2024-03-05 * "Cliente Exemplo B" "Projeto de desenvolvimento"
+  Assets:Bank:Checking:BRL      8000.00 BRL
+  Income:Services              -8000.00 BRL
+
+2024-03-06 * "Provedor Cloud Fictício" "Hospedagem"
+  Liabilities:CreditCard:Main    -350.00 BRL
+  Expenses:Cloud                  350.00 BRL
+
+2024-03-07 * "Loja de Software Fictícia" "Licença de editor"
+  Liabilities:CreditCard:Main    -120.00 BRL
+  Expenses:Software               120.00 BRL
+
+2024-03-08 * "Restaurante Fictício" "Almoço com cliente"
+  Liabilities:CreditCard:Main     -85.50 BRL
+  Expenses:Meals                   85.50 BRL
+
+2024-03-10 * "Banco Fictício" "Tarifa mensal"
+  Assets:Bank:Checking:BRL        -39.90 BRL
+  Expenses:Bank-Fees               39.90 BRL
+
+2024-03-11 * "Contador Fictício" "Honorários de março"
+  Assets:Bank:Checking:BRL       -900.00 BRL
+  Expenses:Professional-Services   900.00 BRL
+
+2024-03-12 * "Papelaria Fictícia" "Material de escritório"
+  Liabilities:CreditCard:Main     -64.30 BRL
+  Expenses:Office                  64.30 BRL
+
+2024-03-13 * "Plataforma de Anúncios Fictícia" "Campanha"
+  Liabilities:CreditCard:Main    -500.00 BRL
+  Expenses:Marketing              500.00 BRL
+
+2024-03-14 * "Companhia Aérea Fictícia" "Passagem para evento"
+  Liabilities:CreditCard:Main    -780.00 BRL
+  Expenses:Travel                 780.00 BRL
+
+2024-03-15 * "Corretora Fictícia" "Rendimento da aplicação"
+  Assets:Bank:Savings:BRL          42.17 BRL
+  Income:Interest                 -42.17 BRL
+
+2024-03-16 * "Transferência para aplicação"
+  Assets:Bank:Checking:BRL      -3000.00 BRL
+  Assets:Bank:Savings:BRL        3000.00 BRL
+
+2024-03-18 * "Câmbio fictício" "Compra de USDC"
+  Assets:Bank:Checking:BRL      -5000.00 BRL
+  Assets:Crypto:Wallet:USDC       1000.00 USDC @ 5.00 BRL
+
+2024-03-19 * "Serviço de API Fictício" "Assinatura mensal"
+  Liabilities:CreditCard:Virtual   -20.00 USD
+  Expenses:Software                 20.00 USD
+
+2024-03-20 * "Cliente Exemplo C" "Fatura internacional"
+  Assets:Bank:Checking:USD        1500.00 USD
+  Income:Services                -1500.00 USD
+
+2024-03-22 * "Conta de internet fictícia"
+  Assets:Bank:Checking:BRL       -149.90 BRL
+  Expenses:Office                 149.90 BRL
+
+2024-03-25 * "Receita Fictícia" "DAS março"
+  Assets:Bank:Checking:BRL       -1180.00 BRL
+  Expenses:Taxes:Simples          1180.00 BRL
+
+2024-03-26 * "Consultoria Fictícia" "Pagamento a fornecedor"
+  Assets:Bank:Checking:BRL       -1500.00 BRL
+  Expenses:Uncategorized          1500.00 BRL
+
+; Pagamento da fatura do cartão pelo banco (total das compras de 03/06 a 03/14 acima)
+2024-03-28 * "Banco Fictício" "Pagamento da fatura do cartão"
+  Assets:Bank:Checking:BRL       -1899.80 BRL
+  Liabilities:CreditCard:Main     1899.80 BRL
+
+2024-03-29 * "Distribuição de lucros"
+  Assets:Bank:Checking:BRL       -4000.00 BRL
+  Equity:Distributions            4000.00 BRL
+
+2024-03-31 balance Liabilities:CreditCard:Main  0.00 BRL
