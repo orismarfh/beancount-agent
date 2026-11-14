@@ -20,6 +20,18 @@ Este repositório contém **apenas código, plano de contas de referência e um 
 Os livros reais de cada empresa ficam em um repositório **privado** separado, que usa este projeto como ferramenta.
 Nunca faça commit de extratos, faturas, livros reais ou credenciais aqui.
 
+## Como rodar
+
+Requer [uv](https://docs.astral.sh/uv/) e Python 3.12.
+
+```bash
+uv sync                                                   # instala dependências
+uv run bean-check examples/demo.beancount                 # valida o livro de exemplo
+uv run fava examples/demo.beancount                       # abre o Fava em http://localhost:5000
+uv run pytest                                             # testes
+uv run beancount-agent --help                             # CLI
+```
+
 ## Licença
 
 Apache-2.0
